@@ -3,10 +3,10 @@
 
 #include "Algorithms.h"
 
-void swap(int* p, int* s){
-    int aux = *p;
-    *p = *s;
-    *s = aux;
+void swap(int p, int s){
+    int aux = p;
+    p = s;
+    s = aux;
 }
 
 int main(void){
@@ -30,7 +30,7 @@ int main(void){
 	int j = 0;
     int i = 0;
     int aux = 0;
-    int flag;
+    int menor;
 	
 	for(w=0; w<tam; w++){
 		scanf("%d", &variable);
@@ -54,12 +54,17 @@ int main(void){
 			 
 			printf("Selection\n");
 		    for(i = 0; i < tam - 1; i++){
-		        flag = i;
-		        for(j = i + 1; j < tam; j++){
-		            if(ar[i] > ar[j])
-		                flag = j;
-		        }
-		        swap(&ar[i], &ar[flag]);
+		        menor = i;
+				for (j = (i+1); j < tam; j++) {
+					if(ar[j] < ar[menor]){
+						menor = j;
+					} 
+				}
+				if (i != menor) {
+					aux = ar[i];
+					ar[i] = ar[menor];
+					ar[menor] = aux;
+				}
 		    }
 			break;
 			
