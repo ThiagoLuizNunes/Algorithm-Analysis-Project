@@ -11,14 +11,23 @@ int main(void){
 	
 	int choice, size;
 	
-	printf("Size of vector:");
-	scanf("%d \n", &size);
-	
-	int values[size];
-	
 	printf("Algorithim:");
 	scanf("%d", &choice);
 	
+	printf("\nSize of vector:");
+	scanf("%d", &size);
+	
+	int vector[size];
+	int i,x, variable;
+	
+	for(i=0; i<size; i++){
+		scanf("%d", &variable);
+		vector[i] = variable;
+	}
+	
+	for(x=0; x<size; x++){
+		printf("\n Position: %d \n", vector[x]);
+	}
 	
 	switch(choice){
 		case 1:
@@ -42,8 +51,6 @@ int main(void){
 			printf("Heap\n");
 			break;
 	}
-	
-	
 	
 	system("pause");
 	
