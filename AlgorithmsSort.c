@@ -104,8 +104,8 @@ int main(void){
 	int w, variable;
 	int j = 0;
     int i = 0;
-    int aux = 0;
-    int menor;
+	int aux = 0;
+	int menor;
 	int *ptr;
 	
 	for(w=0; w<tam; w++){
@@ -129,8 +129,8 @@ int main(void){
 		case 2:
 			 
 			printf("\nSelection\n");
-		    for(i = 0; i < tam - 1; i++){
-		        menor = i;
+			for(i = 0; i < tam - 1; i++){
+			    menor = i;
 				for (j = (i+1); j < tam; j++) {
 					if(ar[j] < ar[menor]){
 						menor = j;
@@ -141,7 +141,7 @@ int main(void){
 					ar[i] = ar[menor];
 					ar[menor] = aux;
 				}
-		    }
+			}
 			break;
 			
 		case 3: 
