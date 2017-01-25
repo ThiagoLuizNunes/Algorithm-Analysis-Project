@@ -9,8 +9,12 @@ int main(void){
 	printf("4 - Quick Sort\n");
 	printf("5 - Heap Sort\n \n");
 	
-	int choice;
-	int values[];
+	int choice, size;
+	
+	printf("Size of vector:");
+	scanf("%d \n", &size);
+	
+	int values[size];
 	
 	printf("Algorithim:");
 	scanf("%d", &choice);
