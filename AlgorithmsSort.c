@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h> 
+#include "Algorithms.h"
 
 int main(void){
 	
@@ -31,6 +32,7 @@ int main(void){
 	
 	switch(choice){
 		case 1:
+			insertion(&vector);
 			//insertion();
 			printf("\nInsertion\n");
 			break;
