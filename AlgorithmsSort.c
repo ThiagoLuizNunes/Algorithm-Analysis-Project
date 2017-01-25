@@ -8,6 +8,55 @@ void swap(int p, int s){
     p = s;
     s = aux;
 }
+void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
+	int i, j, k, metadeTam, *vetorTemp;
+	
+	if(posicaoInicio == posicaoFim){
+		return;
+	}
+
+	metadeTam = (posicaoInicio + posicaoFim)/2;
+	
+	mergeSort(vetor, posicaoInicio, metadeTam);
+	mergeSort(vetor, metadeTam +1, posicaoFim);
+	
+	i = posicaoInicio;
+	j = metadeTam +1;
+	k = 0;
+	vetorTemp = (int *) malloc(sizeof(int) * (posicaoFim - posicaoInicio + 1));
+
+
+	while(i < metadeTam + 1 || j  < posicaoFim + 1) {
+        if (i == metadeTam + 1 ) { 
+            vetorTemp[k] = vetor[j];
+            j++;
+            k++;
+        } 
+        else {
+            if (j == posicaoFim + 1) { 
+                vetorTemp[k] = vetor[i];
+                i++;
+                k++;
+            } 
+            else {
+                if (vetor[i] < vetor[j]) { 
+                    vetorTemp[k] = vetor[i];
+                    i++;
+                    k++;
+                } 
+                else { 
+                    vetorTemp[k] = vetor[j];
+                    j++;
+                    k++;
+                }
+            }
+        }
+	}
+	for(i = posicaoInicio; i <= posicaoFim; i++) {
+    	vetor[i] = vetorTemp[i - posicaoInicio];
+	}
+	free(vetorTemp);
+}
 
 int main(void){
 	
@@ -31,6 +80,7 @@ int main(void){
     int i = 0;
     int aux = 0;
     int menor;
+	int *ptr;
 	
 	for(w=0; w<tam; w++){
 		scanf("%d", &variable);
@@ -71,6 +121,9 @@ int main(void){
 		case 3: 
 			
 			printf("Merge\n");
+			
+			ptr = &ar;
+			mergeSort(ptr, 0, tam-1);
 			break;
 			
 		case 4: 
