@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h> 
 
-#include "Algorithms.h"
 
-void swap(int p, int s){
-    int aux = p;
-    p = s;
-    s = aux;
-}
+/*<<<<<<<<<<<<<<<<<<<<MERGE SORT>>>>>>>>>>>>>>>>>>>>*/
 void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
 	int i, j, k, metadeTam, *vetorTemp;
 	
@@ -58,6 +53,37 @@ void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
 	free(vetorTemp);
 }
 
+/*<<<<<<<<<<<<<<<<<<<<QUICK SORT>>>>>>>>>>>>>>>>>>>>*/
+
+int partition(int* ar, int ini, int fim){
+    int pivo = 0;
+    int topo = 0;
+    int i = 0;
+ 
+    pivo = ar[ini];
+    topo = ini;
+ 
+    for(i = ini + 1; i <= fim; i++){
+        if(pivo > ar[i]){
+            ar[topo] = ar[i];
+            ar[i] = ar[topo + 1];
+            topo++;
+        }
+    }
+    ar[topo] = pivo;
+    return topo;
+}
+
+void quickSort(int* ar, int ini, int fim){
+    int mid = 0;
+ 
+    if(ini < fim){
+        mid = partition(ar, ini, fim);
+        quickSort(ar, ini, mid);
+        quickSort(ar, mid+1, fim);
+    }
+}
+
 int main(void){
 	
 	printf("1 - Insertion Sort\n");
@@ -90,7 +116,7 @@ int main(void){
 	switch(choice){
 		case 1:
 			
-			printf("Insertion\n");
+			printf("\nInsertion\n");
 			for(i = 1; i < tam; i++){
 		        aux = ar[i];
 		        for(j = i - 1; j >= 0 && ar[j] > aux; j--){
@@ -102,7 +128,7 @@ int main(void){
 			
 		case 2:
 			 
-			printf("Selection\n");
+			printf("\nSelection\n");
 		    for(i = 0; i < tam - 1; i++){
 		        menor = i;
 				for (j = (i+1); j < tam; j++) {
@@ -120,47 +146,22 @@ int main(void){
 			
 		case 3: 
 			
-			printf("Merge\n");
-			
+			printf("\nMerge\n");
 			ptr = &ar;
 			mergeSort(ptr, 0, tam-1);
 			break;
 			
 		case 4: 
-		
-			printf("Quick\n");
-			int partition(int* ar, int ini, int fim){
-			    int pivo = 0;
-			    int topo = 0;
-			    int i = 0;
-			 
-			    pivo = ar[ini];
-			    topo = ini;
-			 
-			    for(i = ini + 1; i <= fim; i++){
-			        if(pivo > ar[i]){
-			            ar[topo] = ar[i];
-			            ar[i] = ar[topo + 1];
-			            topo++;
-			        }
-			    }
-			    ar[topo] = pivo;
-			    return topo;
-			}
 			
-			void quick_sort(int* ar, int ini, int fim){
-			    int mid = 0;
-			 
-			    if(ini < fim){
-			        mid = partition(ar, ini, fim);
-			        quick_sort(ar, ini, mid);
-			        quick_sort(ar, mid+1, fim);
-			    }
-			}	
+			printf("\nQuick\n");
+			ptr = &ar;
+			quickSort(ptr, 0, tam-1);
+			break;
 			
 		case 5: 
 			
 			printf("Heap\n");
+			
 			break;
 	}
 	
