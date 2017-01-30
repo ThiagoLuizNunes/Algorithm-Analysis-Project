@@ -84,6 +84,44 @@ void quickSort(int* ar, int ini, int fim){
     }
 }
 
+/*<<<<<<<<<<<<<<<<<<<<HEAP SORT>>>>>>>>>>>>>>>>>>>>*/
+
+void heapSort(int *vet, int tam){
+	int i, aux;
+
+	for(i=(tam - 1)/2; i>=0; i--){
+		createHeap(vet, i, tam-1);
+	}
+	for(i = tam-1; i>=1; i--){
+		aux = vet[0];
+		vet[0] = vet[i];
+		vet[i] = aux;
+		createHeap(vet, 0, i-1);
+	}
+}
+void createHeap(int *vet, int i, int f){
+	int aux = vet[i];
+	int j = i * 2 + 1;
+
+	while(j<=f){
+		if(j<f){
+			if(vet[j] < vet[j+1]){
+				j = j + 1;
+			}
+		}
+		if(aux < vet[j]){
+			vet[i] = vet[j];
+			i = j;
+			j = 2*i+1;
+		}
+		else{
+			j = f+1;
+		}
+	}
+	printf("Passei aqui");
+	vet[i] = aux;
+}
+
 int main(void){
 	
 	printf("1 - Insertion Sort\n");
@@ -161,7 +199,8 @@ int main(void){
 		case 5: 
 			
 			printf("Heap\n");
-			
+			ptr = &ar;
+			heapSort(ptr, tam);
 			break;
 	}
 	
