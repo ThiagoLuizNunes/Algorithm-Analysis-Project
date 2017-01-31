@@ -118,7 +118,6 @@ void createHeap(int *vet, int i, int f){
 			j = f+1;
 		}
 	}
-	printf("Passei aqui");
 	vet[i] = aux;
 }
 
@@ -154,7 +153,7 @@ int main(void){
 	switch(choice){
 		case 1:
 			
-			printf("\nInsertion\n");
+			//printf("\nInsertion\n");
 			for(i = 1; i < tam; i++){
 		        aux = ar[i];
 		        for(j = i - 1; j >= 0 && ar[j] > aux; j--){
@@ -166,7 +165,7 @@ int main(void){
 			
 		case 2:
 			 
-			printf("\nSelection\n");
+			//printf("\nSelection\n");
 			for(i = 0; i < tam - 1; i++){
 			    menor = i;
 				for (j = (i+1); j < tam; j++) {
@@ -184,21 +183,21 @@ int main(void){
 			
 		case 3: 
 			
-			printf("\nMerge\n");
+			//printf("\nMerge\n");
 			ptr = &ar;
 			mergeSort(ptr, 0, tam-1);
 			break;
 			
 		case 4: 
 			
-			printf("\nQuick\n");
+			//printf("\nQuick\n");
 			ptr = &ar;
 			quickSort(ptr, 0, tam-1);
 			break;
 			
 		case 5: 
 			
-			printf("Heap\n");
+			//printf("Heap\n");
 			ptr = &ar;
 			heapSort(ptr, tam);
 			break;
