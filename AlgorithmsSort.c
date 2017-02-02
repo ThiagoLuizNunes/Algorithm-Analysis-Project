@@ -164,9 +164,28 @@ int main(void){
 			break;
 			
 		case 2:
-			 
+			 public void selectionSort(int *vet, int tam){
+			 	
+			 	int menor;
+			 	int aux;
+
+			 	for(i = 0; i < tam - 1; i++){
+			    menor = i;
+					for (j = (i+1); j < tam; j++) {
+						if(vet[j] < vet[menor]){
+							menor = j;
+						} 
+					}
+					if (i != menor) {
+						aux = vet[i];
+						vet[i] = vet[menor];
+						vet[menor] = aux;
+					}
+				}
+			 }
 			//printf("\nSelection\n");
-			for(i = 0; i < tam - 1; i++){
+			 
+			/*for(i = 0; i < tam - 1; i++){
 			    menor = i;
 				for (j = (i+1); j < tam; j++) {
 					if(ar[j] < ar[menor]){
@@ -178,7 +197,7 @@ int main(void){
 					ar[i] = ar[menor];
 					ar[menor] = aux;
 				}
-			}
+			}*/
 			break;
 			
 		case 3: 
