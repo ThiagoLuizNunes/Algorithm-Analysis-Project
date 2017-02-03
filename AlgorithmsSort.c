@@ -2,8 +2,6 @@
 #include <stdlib.h> 
 #include "Algorithms.h"
 
-const char PATH[] = "";
-
 int main(void){
 	
 	printf("1 - Insertion Sort\n");
@@ -11,9 +9,6 @@ int main(void){
 	printf("3 - Merge Sort\n");
 	printf("4 - Quick Sort\n");
 	printf("5 - Heap Sort\n \n");
-	
-	FILE * fp;
-	const char PATH[] = "instancias/";
 	
 	int choice, tam;
 	

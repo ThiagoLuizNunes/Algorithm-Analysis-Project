@@ -210,23 +210,6 @@ void insertionSort(int *vet, int tam){
 	}
 }
 
-void openInstances(int type, int size, char[] path, FILE open){
-	
-	if(type == 10){
-		//Concatenar strings		
-		char[] path = strcat(path, "10.100000.");
-		int vet[size];
-		
-		
-		
-	}
-	else if(type == 50){
-		
-	}
-	else if(type == 90){
-		
-	}
-}
 
 
 
