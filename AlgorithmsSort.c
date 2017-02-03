@@ -20,10 +20,6 @@ int main(void){
 	
 	int ar[tam];
 	int w, variable;
-	int j = 0;
-    int i = 0;
-	int aux = 0;
-	int menor;
 	int *ptr;
 	
 	for(w=0; w<tam; w++){
