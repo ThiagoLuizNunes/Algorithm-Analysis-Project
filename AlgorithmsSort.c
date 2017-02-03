@@ -2,8 +2,6 @@
 #include <stdlib.h> 
 #include "Algorithms.h"
 
-
-
 int main(void){
 	
 	printf("1 - Insertion Sort\n");
@@ -35,40 +33,30 @@ int main(void){
 	
 	switch(choice){
 		case 1:
-			
 			//printf("\nInsertion\n");
-			for(i = 1; i < tam; i++){
-		        aux = ar[i];
-		        for(j = i - 1; j >= 0 && ar[j] > aux; j--){
-		            ar[j+1] = ar[j];
-		        }
-		        ar[j+1] = aux;
-		    }
+		    ptr = &ar;
+		    insertionSort(ptr, tam);
 			break;
 			
 		case 2:
-			 
 			//printf("\nSelection\n");
 			ptr = &ar;
 			selectionSort(ptr, tam);
 			break;
 			
 		case 3: 
-			
 			//printf("\nMerge\n");
 			ptr = &ar;
 			mergeSort(ptr, 0, tam-1);
 			break;
 			
 		case 4: 
-			
 			//printf("\nQuick\n");
 			ptr = &ar;
 			quickSort(ptr, 0, tam-1);
 			break;
 			
 		case 5: 
-			
 			//printf("Heap\n");
 			ptr = &ar;
 			heapSort(ptr, tam);

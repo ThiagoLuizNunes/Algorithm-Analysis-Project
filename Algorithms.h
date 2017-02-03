@@ -1,6 +1,5 @@
-/*<<<<<<<<<<<<<<<<<<<<MERGE SORT>>>>>>>>>>>>>>>>>>>>*/
-
 /*
+SIZE = 50
 100
 9356
 5028
@@ -11,7 +10,50 @@
 467
 2026
 3426
+5256
+9989
+3903
+5023
+7588
+1416
+3700
+2492
+6397
+5252
+7042
+6074
+2746
+4321
+8382
+3621
+2404
+72
+2346
+9024
+6723
+9555
+8731
+6222
+4892
+9882
+8729
+2456
+6828
+4534
+1218
+7416
+1616
+1410
+3728
+6501
+9729
+1087
+5598
+3902
 */
+
+/*<<<<<<<<<<<<<<<<<<<<MERGE SORT>>>>>>>>>>>>>>>>>>>>*/
+
 void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
 	int i, j, k, metadeTam, *vetorTemp;
 	
@@ -134,7 +176,8 @@ void createHeap(int *vet, int i, int f){
 
 void selectionSort(int *vet, int tam){
 			 	
-	int menor, aux, i, j;
+	int menor, aux;
+	int i, j;
 	
 	for(i = 0; i < tam - 1; i++){
 	menor = i;
@@ -148,5 +191,21 @@ void selectionSort(int *vet, int tam){
 			vet[i] = vet[menor];
 			vet[menor] = aux;
 		}
+	}
+}
+
+/*<<<<<<<<<<<<<<<<<<<<INSERTION SORT>>>>>>>>>>>>>>>>>>>>*/
+
+void insertionSort(int *vet, int tam){
+	
+	int i, j;
+	int aux;
+	
+	for(i = 1; i < tam; i++){
+		aux = vet[i];
+		for(j = i - 1; j >= 0 && vet[j] > aux; j--){
+		    vet[j+1] = vet[j];
+		}
+		vet[j+1] = aux;
 	}
 }
