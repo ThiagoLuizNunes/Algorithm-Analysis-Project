@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
-#include "Algorithms.h"
+#include <string.h>
+//#include "Algorithms.h"
 
 void printArray(int *array, int size){
 	int y;
@@ -19,7 +20,9 @@ void sortInstances(char path[], int sort, int size, int type){
 		int i;
 		char *mySort;
 		//Comparing size of vector
+	
 		if(size == 1000000){
+			
 			mySort = (char*) malloc(10*sizeof(char));
 			char *arr = (char*) malloc(7*sizeof(char));
 			
@@ -38,6 +41,7 @@ void sortInstances(char path[], int sort, int size, int type){
 			}
 		}
 		else{
+			
 			mySort = (char*) malloc(9*sizeof(char));
 			char *arr = (char*) malloc(6*sizeof(char));
 			
@@ -120,9 +124,11 @@ void sortInstances(char path[], int sort, int size, int type){
 				fclose(file);
 				//Memory deallocation 
 				free(number);
-				free(tempPath);
+				printf("OI THIAGO");
+				
 			}
 		}
+		free(tempPath);
 	}
 }
 
@@ -139,8 +145,7 @@ int main(void){
 	int sort2 = 50;
 	int sort3 = 90;
 	
-	printf("passei\n\n");
-	sortInstances(PATH, sort1, size2, 1);
+	sortInstances(PATH, sort1, size3, 1);
 	system("pause");
 	
 	return 0;
