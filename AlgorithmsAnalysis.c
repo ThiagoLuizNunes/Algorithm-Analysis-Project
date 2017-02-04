@@ -3,45 +3,90 @@
 
 void sortInstances(char path[], int sort, int size, int type){
 	
-	int vet[size];
-	int i;
-	char mySort[3];
+	int *vet = (int*) malloc(size*sizeof(int));
 	
-	itoa(sort, mySort, 10);
-	strcat(mySort, ".");
+	if(vet!= NULL){
+		
+		int i;
+		char *mySort;
+		
+		//itoa(sort, mySort, 10);
+		//strcat(mySort, ".");
+		
+		if(size == 1000000){
+			mySort = (char*) malloc(10*sizeof(char));
+			char *arr = (char*) malloc(7*sizeof(char));
+			
+			if((mySort != NULL) && (arr!= NULL)){
+				itoa(sort, mySort, 10);
+				strcat(mySort, ".");
+				
+				itoa(size, arr, 10);
+				strcat(arr, ".");
+				
+				strcat(mySort, arr);
+				
+				free(arr);
+			}
+		}
+		else{
+			mySort = (char*) malloc(9*sizeof(char));
+			char *arr = (char*) malloc(6*sizeof(char));
+			
+			if((mySort != NULL) && (arr!= NULL)){
+				itoa(sort, mySort, 10);
+				strcat(mySort, ".");
+				
+				itoa(size, arr, 10);
+				strcat(arr, ".");
+				
+				strcat(mySort, arr);
+				
+				free(arr);
+			}
+		}
 	
-	if(size == 1000000){
-		char arr[7];
-		itoa(size, arr, 10);
-		strcat(arr, ".");
-		strcat(mySort, arr);
+		char *myPath = (char*) malloc(strlen(path) + strlen(mySort));
+		strcpy(myPath, path);
+		strcat(myPath, mySort);
+		
+		free(mySort);
+		
+		printf("myPATH: %s \n", myPath);
+		
+		FILE *fp;
+		
+		char *number;
+		char *tempPath;
+		
+		for(i=1; i<=10; i++){
+			
+			number = (char*) malloc(5*sizeof(char));
+			tempPath = (char*) malloc(strlen(number) + strlen(myPath));
+			
+			char arr[strlen(myPath)];
+			strcpy(arr, myPath);
+			
+			if(number != NULL){
+				itoa(i, number, 10);
+				strcat(number, ".in");
+				strcpy(tempPath, arr);
+				strcat(tempPath, number);
+				printf("TEMPATH: %s \n", tempPath);
+				
+				//fp = fopen();
+				
+				free(number);
+				free(tempPath);
+			}
+		}
 	}
-	else{
-		char arr[6];
-		itoa(size, arr, 10);
-		strcat(arr, ".");
-		strcat(mySort, arr);
-	}
-
-	char myPath[20];
-	strcat(myPath, path);
-	strcat(myPath, mySort);
-	printf("myPATH: %s \n", myPath);
-	
-	
-	FILE *fp;
-	
-	for(i=0; i<=10; i++){
-		//myPath = strcat(myPath, entropia);
-		//fp = fopen();
-	}
-	
 }
 
 
 int main(void){
 	
-	const char PATH[] = "instancias/";
+	char PATH[] = "instancias/";
 	
 	int size1 = 100000;
 	int size2 = 500000;
@@ -51,8 +96,7 @@ int main(void){
 	int sort2 = 50;
 	int sort3 = 90;
 		
-		printf("passei");
-	sortInstances(PATH, sort3, size3, 1);
+	sortInstances(PATH, sort1, size3, 1);
 	system("pause");
 	
 	return 0;
