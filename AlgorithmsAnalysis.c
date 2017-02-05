@@ -19,8 +19,8 @@ void sortInstances(char path[], int sort, int size, int type){
 	
 	//Initializing Vector with size coming parameter
 	int *vet = malloc(size*sizeof(int));
-	double total_time = 0;
-	double average_time = 0;
+	double total_time = 0.00;
+	double average_time = 0.00;
 	clock_t start_t, end_t;
 	
 	//Creating new file to receive the results
@@ -163,7 +163,7 @@ void sortInstances(char path[], int sort, int size, int type){
 				
 				//total_time = ((float)(end_t - start_t) / 1000000.0F) * 1000;
 				total_time = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-				
+				printf("TIME: %lf\n");
 				average_time = average_time + total_time;
 				
 				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %lf %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total_time, "seconds\n");
@@ -171,7 +171,7 @@ void sortInstances(char path[], int sort, int size, int type){
 				fclose(file);
 			}
 		}
-	//	average_time = average_time / 10.0;
+		average_time = average_time / 10.0;
 		fprintf(results, "%s %d %s", "Average :", average_time, "\n \n");
 		fclose(results);
 		free(myPath);
@@ -194,9 +194,9 @@ int main(void){
 	//Quick Sort
 	
 	//Sort 10%
-	//sortInstances(PATH, sort1, size1, 5);
-	//sortInstances(PATH, sort1, size2, 5);
-	//sortInstances(PATH, sort1, size3, 5);
+	sortInstances(PATH, sort1, size1, 5);
+	sortInstances(PATH, sort1, size2, 5);
+	sortInstances(PATH, sort1, size3, 5);
 
 	//Sort 50%
 	//sortInstances(PATH, sort2, size1, 5);
@@ -211,19 +211,19 @@ int main(void){
 	//Sort Algorithm of C
 	
 	//Sort 10%
-	sortInstances(PATH, sort1, size1, 6);
-	sortInstances(PATH, sort1, size2, 6);
-	sortInstances(PATH, sort1, size3, 6);
+	//sortInstances(PATH, sort1, size1, 6);
+	//sortInstances(PATH, sort1, size2, 6);
+	//sortInstances(PATH, sort1, size3, 6);
 
 	//Sort 50%
-	sortInstances(PATH, sort2, size1, 6);
-	sortInstances(PATH, sort2, size2, 6);
-	sortInstances(PATH, sort2, size3, 6);
+	//sortInstances(PATH, sort2, size1, 6);
+	//sortInstances(PATH, sort2, size2, 6);
+	//sortInstances(PATH, sort2, size3, 6);
 	
 	//Sort 90% 
-	sortInstances(PATH, sort3, size1, 6);
-	sortInstances(PATH, sort3, size1, 6);
-	sortInstances(PATH, sort3, size1, 6);
+	//sortInstances(PATH, sort3, size1, 6);
+	//sortInstances(PATH, sort3, size1, 6);
+	//sortInstances(PATH, sort3, size1, 6);
 	
 	system("pause");
 	
