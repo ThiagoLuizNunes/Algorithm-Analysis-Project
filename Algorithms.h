@@ -53,19 +53,21 @@ SIZE = 50
 */
 
 /*<<<<<<<<<<<<<<<<<<<<MERGE SORT>>>>>>>>>>>>>>>>>>>>*/
+#include <stdio.h>
+#include <stdlib.h>
 
 void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
 	int i, j, k, metadeTam, *vetorTemp;
-	
+
 	if(posicaoInicio == posicaoFim){
 		return;
 	}
 
 	metadeTam = (posicaoInicio + posicaoFim)/2;
-	
+
 	mergeSort(vetor, posicaoInicio, metadeTam);
 	mergeSort(vetor, metadeTam +1, posicaoFim);
-	
+
 	i = posicaoInicio;
 	j = metadeTam +1;
 	k = 0;
@@ -73,24 +75,24 @@ void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
 
 
 	while(i < metadeTam + 1 || j  < posicaoFim + 1) {
-        if (i == metadeTam + 1 ) { 
+        if (i == metadeTam + 1 ) {
             vetorTemp[k] = vetor[j];
             j++;
             k++;
-        } 
+        }
         else {
-            if (j == posicaoFim + 1) { 
+            if (j == posicaoFim + 1) {
                 vetorTemp[k] = vetor[i];
                 i++;
                 k++;
-            } 
+            }
             else {
-                if (vetor[i] < vetor[j]) { 
+                if (vetor[i] < vetor[j]) {
                     vetorTemp[k] = vetor[i];
                     i++;
                     k++;
-                } 
-                else { 
+                }
+                else {
                     vetorTemp[k] = vetor[j];
                     j++;
                     k++;
@@ -110,10 +112,10 @@ int partition(int* ar, int ini, int fim){
     int pivo = 0;
     int topo = 0;
     int i = 0;
- 
+
     pivo = ar[ini];
     topo = ini;
- 
+
     for(i = ini + 1; i <= fim; i++){
         if(pivo > ar[i]){
             ar[topo] = ar[i];
@@ -127,7 +129,7 @@ int partition(int* ar, int ini, int fim){
 
 void quickSort(int* ar, int ini, int fim){
     int mid = 0;
- 
+
     if(ini < fim){
         mid = partition(ar, ini, fim);
         quickSort(ar, ini, mid);
@@ -176,16 +178,16 @@ void heapSort(int *vet, int tam){
 /*<<<<<<<<<<<<<<<<<<<<SELECTION SORT>>>>>>>>>>>>>>>>>>>>*/
 
 void selectionSort(int *vet, int tam){
-			 	
+
 	int menor, aux;
 	int i, j;
-	
+
 	for(i = 0; i < tam - 1; i++){
 	menor = i;
 		for (j = (i+1); j < tam; j++) {
 			if(vet[j] < vet[menor]){
 				menor = j;
-			} 
+			}
 		}
 		if (i != menor) {
 			aux = vet[i];
@@ -198,10 +200,10 @@ void selectionSort(int *vet, int tam){
 /*<<<<<<<<<<<<<<<<<<<<INSERTION SORT>>>>>>>>>>>>>>>>>>>>*/
 
 void insertionSort(int *vet, int tam){
-	
+
 	int i, j;
 	int aux;
-	
+
 	for(i = 1; i < tam; i++){
 		aux = vet[i];
 		for(j = i - 1; j >= 0 && vet[j] > aux; j--){

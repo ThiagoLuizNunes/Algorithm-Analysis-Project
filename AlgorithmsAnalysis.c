@@ -154,7 +154,7 @@ void sortInstances(char path[], int sort, int size, int type){
 
 					case 5:
 						heapSort(vet, size);
-						//print_vector(vet, size);
+						print_vector(vet, size);
 						break;
 
 					case 6:
@@ -202,6 +202,7 @@ int main(void){
 
 	//Sort 10%
 	sortInstances(PATH, sort1, size1, 5);
+	/*
 	sortInstances(PATH, sort1, size2, 5);
 	sortInstances(PATH, sort1, size3, 5);
 
@@ -231,7 +232,7 @@ int main(void){
 	sortInstances(PATH, sort3, size1, 6);
 	sortInstances(PATH, sort3, size1, 6);
 	sortInstances(PATH, sort3, size1, 6);
-
+*/
 	system("pause");
 
 	return 0;
