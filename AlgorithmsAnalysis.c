@@ -13,17 +13,16 @@ void print_vector(int v[], int size){
 void sortInstances(char path[], int sort, int size, int type){
 	
 	//Initializing Vector with size coming parameter
-	//int *vet = (int*) malloc(size*sizeof(int));
 	int *vet = malloc(size*sizeof(int));
-	
+	//Creating new file to receive the results
+	FILE *results = fopen("instancias/results.txt", "a");
 	if(vet!= NULL){
 		
 		int i;
 		char *mySort;
+		
 		//Comparing size of vector
-	
 		if(size == 1000000){
-			
 			mySort = (char*) malloc(10*sizeof(char));
 			char *arr = (char*) malloc(7*sizeof(char));
 			
@@ -58,7 +57,6 @@ void sortInstances(char path[], int sort, int size, int type){
 				free(arr);
 			}
 		}
-		
 		//Dynamic Initialization of arrays
 		char *myPath = (char*) malloc(strlen(path) + strlen(mySort));
 		//Coping PATH(parameter) to a new variable myPath
@@ -71,9 +69,9 @@ void sortInstances(char path[], int sort, int size, int type){
 		char *number;
 		char *tempPath;
 		
-		for(i=1; i<=1; i++){
+		for(i=1; i<=10; i++){
 			
-			if(size == 1000000){
+			if(i == 10){
 				number = (char*) malloc(5*sizeof(char));
 			}
 			else{
@@ -97,7 +95,6 @@ void sortInstances(char path[], int sort, int size, int type){
 				//Opening data from FILE 
 				FILE *file;
 				file = fopen(tempPath, "r");
-				
 				if(file != NULL){
 					while((fscanf(file, "%d", &j)) != EOF){
 						if(x==0){
@@ -113,34 +110,45 @@ void sortInstances(char path[], int sort, int size, int type){
 					printf("Error to open FILE!");
 				}
 				
+				//clock_t start_t, end_t, total_t; 
+				
+				//start_t = clock();
+				//printf("START_T = %ld\n", start_t);
 				switch(type){
 					
 					case 1:
-						printf("BEGIN SELECTION");
 					    insertionSort(vet, size);
-					    printf("END SELECTION");
-					    print_vector(vet, size);
+					    //print_vector(vet, size);
 						break;
 						
 					case 2:
 						selectionSort(vet, size);
-						print_vector(vet, size);
+						//print_vector(vet, size);
 						break;
+						
 					case 3:
 						mergeSort(vet, 0, size-1);
-						print_vector(vet, size);
+						//print_vector(vet, size);
 						break;
+						
 					case 4: 
 						quickSort(vet, 0, size-1);
-						print_vector(vet, size);
+						//print_vector(vet, size);
 						break;
 						
 					case 5: 
 						heapSort(vet, size);
-						print_vector(vet, size);
+						//print_vector(vet, size);
 						break;	
 				}
-				printf("OI THIAGO\n");
+				
+				//end_t = clock();
+				//printf("END_T = %ld\n", end_t);
+				
+				//total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+				//printf("TOTAL TIME CPU: %f\n", total_t);
+				
+				fprintf(results, "%s %d %s %d %s %s %d %s %d %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: \n");
 				//Close FILE
 				fclose(file);
 				//Memory deallocation 
@@ -148,6 +156,8 @@ void sortInstances(char path[], int sort, int size, int type){
 				
 			}
 		}
+		fprintf(results, "%s", "\n");
+		fclose(results);
 		free(tempPath);
 	}
 }
@@ -165,7 +175,21 @@ int main(void){
 	int sort2 = 50;
 	int sort3 = 90;
 	
-	sortInstances(PATH, sort3, size3, 1);
+	//Sort 10%
+	//sortInstances(PATH, sort1, size1, 5);
+	//sortInstances(PATH, sort1, size2, 5);
+	//sortInstances(PATH, sort1, size3, 5);
+	//Sort 50%
+	
+	//sortInstances(PATH, sort2, size1, 5);
+	//sortInstances(PATH, sort2, size2, 5);
+	sortInstances(PATH, sort2, size3, 5);
+	
+	//Sort 90% 
+	sortInstances(PATH, sort3, size1, 5);
+	sortInstances(PATH, sort3, size1, 5);
+	sortInstances(PATH, sort3, size1, 5);
+	
 	system("pause");
 	
 	return 0;

@@ -30,31 +30,31 @@ int main(void){
 	switch(choice){
 		case 1:
 			//printf("\nInsertion\n");
-		    ptr = &ar;
+		    ptr = ar;
 		    insertionSort(ptr, tam);
 			break;
 			
 		case 2:
 			//printf("\nSelection\n");
-			ptr = &ar;
+			ptr = ar;
 			selectionSort(ptr, tam);
 			break;
 			
 		case 3: 
 			//printf("\nMerge\n");
-			ptr = &ar;
+			ptr = ar;
 			mergeSort(ptr, 0, tam-1);
 			break;
 			
 		case 4: 
 			//printf("\nQuick\n");
-			ptr = &ar;
+			ptr = ar;
 			quickSort(ptr, 0, tam-1);
 			break;
 			
 		case 5: 
 			//printf("Heap\n");
-			ptr = &ar;
+			ptr = ar;
 			heapSort(ptr, tam);
 			break;
 	}
