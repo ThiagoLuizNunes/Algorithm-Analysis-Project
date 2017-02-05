@@ -15,6 +15,7 @@ void print_vector(int v[], int size){
 	}
 }
 
+
 void sortInstances(char path[], int sort, int size, int type){
 
 	//Initializing Vector with size coming parameter
@@ -37,10 +38,12 @@ void sortInstances(char path[], int sort, int size, int type){
 
 			if((mySort != NULL) && (arr!= NULL)){
 				//Transforming Interger at String and Concatening
-				itoa(sort, mySort, 10);
+				//itoa(sort, mySort, 10);
+				sprintf(mySort, "%d", sort);
 				strcat(mySort, ".");
 				//Transforming Interger at String and Concatening
-				itoa(size, arr, 10);
+				//itoa(size, arr, 10);
+				sprintf(arr, "%d", size);
 				strcat(arr, ".");
 
 				//Concatening Strings to form PATH
@@ -55,10 +58,12 @@ void sortInstances(char path[], int sort, int size, int type){
 			char *arr = (char*) malloc(6*sizeof(char));
 
 			if((mySort != NULL) && (arr!= NULL)){
-				itoa(sort, mySort, 10);
+				//itoa(sort, mySort, 10);
+				sprintf(mySort, "%d", sort);
 				strcat(mySort, ".");
 
-				itoa(size, arr, 10);
+				//itoa(size, arr, 10);
+				sprintf(arr, "%d", size);
 				strcat(arr, ".");
 
 				strcat(mySort, arr);
@@ -93,7 +98,8 @@ void sortInstances(char path[], int sort, int size, int type){
 
 			if(number != NULL){
 				//Transforming Interger at String
-				itoa(i, number, 10);
+				//itoa(i, number, 10);
+				sprintf(number, "%d", i);
 				//Concatening Strings to form tempPATH(PROVISIONAL)
 				strcat(number, ".in");
 				strcat(tempPath, number);
@@ -179,6 +185,8 @@ void sortInstances(char path[], int sort, int size, int type){
 	free(vet);
 }
 
+
+
 int main(void){
 
 	char PATH[] = "instancias/";
@@ -199,14 +207,14 @@ int main(void){
 	sortInstances(PATH, sort1, size3, 5);
 
 	//Sort 50%
-	//sortInstances(PATH, sort2, size1, 5);
-	//sortInstances(PATH, sort2, size2, 5);
-	//sortInstances(PATH, sort2, size3, 5);
+	sortInstances(PATH, sort2, size1, 5);
+	sortInstances(PATH, sort2, size2, 5);
+	sortInstances(PATH, sort2, size3, 5);
 
 	//Sort 90%
-	//sortInstances(PATH, sort3, size1, 5);
-	//sortInstances(PATH, sort3, size1, 5);
-	//sortInstances(PATH, sort3, size1, 5);
+	sortInstances(PATH, sort3, size1, 5);
+	sortInstances(PATH, sort3, size1, 5);
+	sortInstances(PATH, sort3, size1, 5);
 
 	//Sort Algorithm of C
 
