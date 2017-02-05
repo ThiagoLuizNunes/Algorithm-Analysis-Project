@@ -19,6 +19,10 @@ void sortInstances(char path[], int sort, int size, int type){
 	
 	//Initializing Vector with size coming parameter
 	int *vet = malloc(size*sizeof(int));
+	double total_time = 0;
+	double average_time = 0;
+	clock_t start_t, end_t;
+	
 	//Creating new file to receive the results
 	FILE *results = fopen("instancias/results.txt", "a");
 	if(vet!= NULL){
@@ -117,7 +121,7 @@ void sortInstances(char path[], int sort, int size, int type){
 					printf("Error to open FILE!");
 				}
 				
-				clock_t start_t, end_t, total_t; 
+				
 				
 				start_t = clock();
 				//printf("START_T = %ld\n", start_t);
@@ -157,16 +161,18 @@ void sortInstances(char path[], int sort, int size, int type){
 				end_t = clock();
 				//printf("END_T = %ld\n", end_t);
 				
-				//total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-				float total = ((float)(end_t - start_t) / 1000000.0F) * 1000;
-				//printf("TOTAL TIME CPU: %f\n", total_t);
+				//total_time = ((float)(end_t - start_t) / 1000000.0F) * 1000;
+				total_time = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 				
-				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %lf %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total, "seconds\n");
+				average_time = average_time + total_time;
+				
+				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %lf %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total_time, "seconds\n");
 				//Close FILE
 				fclose(file);
 			}
 		}
-		fprintf(results, "%s", "\n");
+	//	average_time = average_time / 10.0;
+		fprintf(results, "%s %d %s", "Average :", average_time, "\n \n");
 		fclose(results);
 		free(myPath);
 	}
