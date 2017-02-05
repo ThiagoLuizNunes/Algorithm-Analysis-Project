@@ -219,19 +219,19 @@ int main(void){
 	//Sort Algorithm of C
 
 	//Sort 10%
-	//sortInstances(PATH, sort1, size1, 6);
-	//sortInstances(PATH, sort1, size2, 6);
-	//sortInstances(PATH, sort1, size3, 6);
+	sortInstances(PATH, sort1, size1, 6);
+	sortInstances(PATH, sort1, size2, 6);
+	sortInstances(PATH, sort1, size3, 6);
 
 	//Sort 50%
-	//sortInstances(PATH, sort2, size1, 6);
-	//sortInstances(PATH, sort2, size2, 6);
-	//sortInstances(PATH, sort2, size3, 6);
+	sortInstances(PATH, sort2, size1, 6);
+	sortInstances(PATH, sort2, size2, 6);
+	sortInstances(PATH, sort2, size3, 6);
 
 	//Sort 90%
-	//sortInstances(PATH, sort3, size1, 6);
-	//sortInstances(PATH, sort3, size1, 6);
-	//sortInstances(PATH, sort3, size1, 6);
+	sortInstances(PATH, sort3, size1, 6);
+	sortInstances(PATH, sort3, size1, 6);
+	sortInstances(PATH, sort3, size1, 6);
 
 	system("pause");
 
