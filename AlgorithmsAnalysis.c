@@ -110,10 +110,10 @@ void sortInstances(char path[], int sort, int size, int type){
 					printf("Error to open FILE!");
 				}
 				
-				//clock_t start_t, end_t, total_t; 
+				clock_t start_t, end_t, total_t; 
 				
-				//start_t = clock();
-				//printf("START_T = %ld\n", start_t);
+				start_t = clock();
+				printf("START_T = %ld\n", start_t);
 				switch(type){
 					
 					case 1:
@@ -142,13 +142,14 @@ void sortInstances(char path[], int sort, int size, int type){
 						break;	
 				}
 				
-				//end_t = clock();
-				//printf("END_T = %ld\n", end_t);
+				end_t = clock();
+				printf("END_T = %ld\n", end_t);
 				
-				//total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+				total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+				float total = ((float)(end_t - start_t) / 1000000.0F) * 1000;
 				//printf("TOTAL TIME CPU: %f\n", total_t);
 				
-				fprintf(results, "%s %d %s %d %s %s %d %s %d %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: \n");
+				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %lf %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total, "seconds\n");
 				//Close FILE
 				fclose(file);
 				//Memory deallocation 
@@ -176,13 +177,13 @@ int main(void){
 	int sort3 = 90;
 	
 	//Sort 10%
-	//sortInstances(PATH, sort1, size1, 5);
-	//sortInstances(PATH, sort1, size2, 5);
-	//sortInstances(PATH, sort1, size3, 5);
+	sortInstances(PATH, sort1, size1, 5);
+	sortInstances(PATH, sort1, size2, 5);
+	sortInstances(PATH, sort1, size3, 5);
 	//Sort 50%
 	
-	//sortInstances(PATH, sort2, size1, 5);
-	//sortInstances(PATH, sort2, size2, 5);
+	sortInstances(PATH, sort2, size1, 5);
+	sortInstances(PATH, sort2, size2, 5);
 	sortInstances(PATH, sort2, size3, 5);
 	
 	//Sort 90% 
