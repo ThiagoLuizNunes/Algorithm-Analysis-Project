@@ -1,19 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
-//#include "Algorithms.h"
+#include <time.h>
+#include "Algorithms.h"
 
-void printArray(int *array, int size){
-	int y;
-	printf("\n\n");
-	for(y=0; y<size; y++){
-		printf("%d\n", array[y]);
+void print_vector(int v[], int size){
+	int i;
+	for(i = 0; i < size; i++){
+		printf("%d \n", v[i]);
 	}
 }
 void sortInstances(char path[], int sort, int size, int type){
 	
 	//Initializing Vector with size coming parameter
-	int *vet = (int*) malloc(size*sizeof(int));
+	//int *vet = (int*) malloc(size*sizeof(int));
+	int *vet = malloc(size*sizeof(int));
 	
 	if(vet!= NULL){
 		
@@ -92,39 +93,58 @@ void sortInstances(char path[], int sort, int size, int type){
 				
 				int position = 0;
 				int  j = 0;
+				int x = 0;
 				//Opening data from FILE 
 				FILE *file;
 				file = fopen(tempPath, "r");
 				
 				if(file != NULL){
-					/*do{
-						fscanf(file, "%d", &j);
-						printf("NUMBER: %d\n", j);
-						//vet[position] = j;
-						//position++;
-						
-					}while(!feof(file));*/
 					while((fscanf(file, "%d", &j)) != EOF){
-						printf("NUMBER: %d\n", j);
+						if(x==0){
+							x++;
+							//Faz nada
+						}else{
+							vet[position] = j;
+							position++;
+						}
 					}
 				}
 				else{
 					printf("Error to open FILE!");
 				}
 				
-				int *ptr;
 				switch(type){
+					
 					case 1:
-						//ptr = &vet;
-						//mergeSort(ptr, 0, size-1);
-						//printArray(ptr, size);
+						printf("BEGIN SELECTION");
+					    insertionSort(vet, size);
+					    printf("END SELECTION");
+					    print_vector(vet, size);
 						break;
+						
+					case 2:
+						selectionSort(vet, size);
+						print_vector(vet, size);
+						break;
+					case 3:
+						mergeSort(vet, 0, size-1);
+						print_vector(vet, size);
+						break;
+					case 4: 
+						quickSort(vet, 0, size-1);
+						print_vector(vet, size);
+						break;
+						
+					case 5: 
+						heapSort(vet, size);
+						print_vector(vet, size);
+						break;	
 				}
+				printf("OI THIAGO\n");
 				//Close FILE
 				fclose(file);
 				//Memory deallocation 
 				free(number);
-				printf("OI THIAGO");
 				
 			}
 		}
@@ -145,7 +165,7 @@ int main(void){
 	int sort2 = 50;
 	int sort3 = 90;
 	
-	sortInstances(PATH, sort1, size3, 1);
+	sortInstances(PATH, sort3, size3, 1);
 	system("pause");
 	
 	return 0;

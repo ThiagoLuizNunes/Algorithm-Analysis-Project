@@ -137,19 +137,6 @@ void quickSort(int* ar, int ini, int fim){
 
 /*<<<<<<<<<<<<<<<<<<<<HEAP SORT>>>>>>>>>>>>>>>>>>>>*/
 
-void heapSort(int *vet, int tam){
-	int i, aux;
-
-	for(i=(tam - 1)/2; i>=0; i--){
-		createHeap(vet, i, tam-1);
-	}
-	for(i = tam-1; i>=1; i--){
-		aux = vet[0];
-		vet[0] = vet[i];
-		vet[i] = aux;
-		createHeap(vet, 0, i-1);
-	}
-}
 void createHeap(int *vet, int i, int f){
 	int aux = vet[i];
 	int j = i * 2 + 1;
@@ -170,6 +157,20 @@ void createHeap(int *vet, int i, int f){
 		}
 	}
 	vet[i] = aux;
+}
+
+void heapSort(int *vet, int tam){
+	int i, aux;
+
+	for(i=(tam - 1)/2; i>=0; i--){
+		createHeap(vet, i, tam-1);
+	}
+	for(i = tam-1; i>=1; i--){
+		aux = vet[0];
+		vet[0] = vet[i];
+		vet[i] = aux;
+		createHeap(vet, 0, i-1);
+	}
 }
 
 /*<<<<<<<<<<<<<<<<<<<<SELECTION SORT>>>>>>>>>>>>>>>>>>>>*/
