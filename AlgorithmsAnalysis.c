@@ -4,12 +4,17 @@
 #include <time.h>
 #include "Algorithms.h"
 
+int cmpfunc (const void * a, const void * b){
+   return ( *(int*)a - *(int*)b );
+}
+
 void print_vector(int v[], int size){
 	int i;
 	for(i = 0; i < size; i++){
 		printf("%d \n", v[i]);
 	}
 }
+
 void sortInstances(char path[], int sort, int size, int type){
 	
 	//Initializing Vector with size coming parameter
@@ -115,7 +120,7 @@ void sortInstances(char path[], int sort, int size, int type){
 				clock_t start_t, end_t, total_t; 
 				
 				start_t = clock();
-				printf("START_T = %ld\n", start_t);
+				//printf("START_T = %ld\n", start_t);
 				switch(type){
 					
 					case 1:
@@ -142,10 +147,15 @@ void sortInstances(char path[], int sort, int size, int type){
 						heapSort(vet, size);
 						//print_vector(vet, size);
 						break;	
+					
+					case 6: 
+						qsort(vet, size, sizeof(int), cmpfunc);
+						//print_vector(vet, size);
+						break;
 				}
 				
 				end_t = clock();
-				printf("END_T = %ld\n", end_t);
+				//printf("END_T = %ld\n", end_t);
 				
 				//total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
 				float total = ((float)(end_t - start_t) / 1000000.0F) * 1000;
@@ -154,8 +164,6 @@ void sortInstances(char path[], int sort, int size, int type){
 				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %lf %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total, "seconds\n");
 				//Close FILE
 				fclose(file);
-				
-				
 			}
 		}
 		fprintf(results, "%s", "\n");
@@ -164,7 +172,6 @@ void sortInstances(char path[], int sort, int size, int type){
 	}
 	free(vet);
 }
-
 
 int main(void){
 	
@@ -178,20 +185,39 @@ int main(void){
 	int sort2 = 50;
 	int sort3 = 90;
 	
-	//Sort 10%
-	sortInstances(PATH, sort1, size1, 5);
-	sortInstances(PATH, sort1, size2, 5);
-	sortInstances(PATH, sort1, size3, 5);
-	//Sort 50%
+	//Quick Sort
 	
-	sortInstances(PATH, sort2, size1, 5);
-	sortInstances(PATH, sort2, size2, 5);
-	sortInstances(PATH, sort2, size3, 5);
+	//Sort 10%
+	//sortInstances(PATH, sort1, size1, 5);
+	//sortInstances(PATH, sort1, size2, 5);
+	//sortInstances(PATH, sort1, size3, 5);
+
+	//Sort 50%
+	//sortInstances(PATH, sort2, size1, 5);
+	//sortInstances(PATH, sort2, size2, 5);
+	//sortInstances(PATH, sort2, size3, 5);
 	
 	//Sort 90% 
-	sortInstances(PATH, sort3, size1, 5);
-	sortInstances(PATH, sort3, size1, 5);
-	sortInstances(PATH, sort3, size1, 5);
+	//sortInstances(PATH, sort3, size1, 5);
+	//sortInstances(PATH, sort3, size1, 5);
+	//sortInstances(PATH, sort3, size1, 5);
+	
+	//Sort Algorithm of C
+	
+	//Sort 10%
+	sortInstances(PATH, sort1, size1, 6);
+	sortInstances(PATH, sort1, size2, 6);
+	sortInstances(PATH, sort1, size3, 6);
+
+	//Sort 50%
+	sortInstances(PATH, sort2, size1, 6);
+	sortInstances(PATH, sort2, size2, 6);
+	sortInstances(PATH, sort2, size3, 6);
+	
+	//Sort 90% 
+	sortInstances(PATH, sort3, size1, 6);
+	sortInstances(PATH, sort3, size1, 6);
+	sortInstances(PATH, sort3, size1, 6);
 	
 	system("pause");
 	
