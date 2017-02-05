@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h> 
+#include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include "Algorithms.h"
@@ -16,25 +16,25 @@ void print_vector(int v[], int size){
 }
 
 void sortInstances(char path[], int sort, int size, int type){
-	
+
 	//Initializing Vector with size coming parameter
 	int *vet = malloc(size*sizeof(int));
 	double total_time = 0.00;
 	double average_time = 0.00;
 	clock_t start_t, end_t;
-	
+
 	//Creating new file to receive the results
 	FILE *results = fopen("instancias/results.txt", "a");
 	if(vet!= NULL){
-		
+
 		int i;
 		char *mySort;
-		
+
 		//Comparing size of vector
 		if(size == 1000000){
 			mySort = (char*) malloc(10*sizeof(char));
 			char *arr = (char*) malloc(7*sizeof(char));
-			
+
 			if((mySort != NULL) && (arr!= NULL)){
 				//Transforming Interger at String and Concatening
 				itoa(sort, mySort, 10);
@@ -42,27 +42,27 @@ void sortInstances(char path[], int sort, int size, int type){
 				//Transforming Interger at String and Concatening
 				itoa(size, arr, 10);
 				strcat(arr, ".");
-				
+
 				//Concatening Strings to form PATH
 				strcat(mySort, arr);
-				
+
 				free(arr);
 			}
 		}
 		else{
-			
+
 			mySort = (char*) malloc(9*sizeof(char));
 			char *arr = (char*) malloc(6*sizeof(char));
-			
+
 			if((mySort != NULL) && (arr!= NULL)){
 				itoa(sort, mySort, 10);
 				strcat(mySort, ".");
-				
+
 				itoa(size, arr, 10);
 				strcat(arr, ".");
-				
+
 				strcat(mySort, arr);
-				
+
 				free(arr);
 			}
 		}
@@ -72,38 +72,38 @@ void sortInstances(char path[], int sort, int size, int type){
 		strcpy(myPath, path);
 		//Concatening Strings to form myPATH
 		strcat(myPath, mySort);
-		//Memory deallocation 
+		//Memory deallocation
 		free(mySort);
-		
+
 		char *number;
 		char *tempPath;
-		
+
 		for(i=1; i<=10; i++){
-			
+
 			if(i == 10){
 				number = (char*) malloc(5*sizeof(char));
 			}
 			else{
 				number = (char*) malloc(4*sizeof(char));
 			}
-			
+
 			//Provisional PATH
 			char tempPath[strlen(myPath)];
 			strcpy(tempPath, myPath);
-			
+
 			if(number != NULL){
 				//Transforming Interger at String
 				itoa(i, number, 10);
 				//Concatening Strings to form tempPATH(PROVISIONAL)
 				strcat(number, ".in");
 				strcat(tempPath, number);
-				//Memory deallocation 
+				//Memory deallocation
 				free(number);
-				
+
 				int position = 0;
 				int  j = 0;
 				int x = 0;
-				//Opening data from FILE 
+				//Opening data from FILE
 				FILE *file;
 				file = fopen(tempPath, "r");
 				if(file != NULL){
@@ -120,59 +120,59 @@ void sortInstances(char path[], int sort, int size, int type){
 				else{
 					printf("Error to open FILE!");
 				}
-				
-				
-				
+
+
+
 				start_t = clock();
 				//printf("START_T = %ld\n", start_t);
 				switch(type){
-					
+
 					case 1:
 					    insertionSort(vet, size);
 					    //print_vector(vet, size);
 						break;
-						
+
 					case 2:
 						selectionSort(vet, size);
 						//print_vector(vet, size);
 						break;
-						
+
 					case 3:
 						mergeSort(vet, 0, size-1);
 						//print_vector(vet, size);
 						break;
-						
-					case 4: 
+
+					case 4:
 						quickSort(vet, 0, size-1);
 						//print_vector(vet, size);
 						break;
-						
-					case 5: 
+
+					case 5:
 						heapSort(vet, size);
 						//print_vector(vet, size);
-						break;	
-					
-					case 6: 
+						break;
+
+					case 6:
 						qsort(vet, size, sizeof(int), cmpfunc);
 						//print_vector(vet, size);
 						break;
 				}
-				
+
 				end_t = clock();
 				//printf("END_T = %ld\n", end_t);
-				
+
 				//total_time = ((float)(end_t - start_t) / 1000000.0F) * 1000;
 				total_time = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-				printf("TIME: %lf\n");
+				printf("TIME:  %lf \n", total_time);
 				average_time = average_time + total_time;
-				
-				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %lf %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total_time, "seconds\n");
+
+				fprintf(results, "%s %d %s %d %s %s %d %s %d %s %f %s", "Algorithm: ", type, " | Sort: ", sort, "%" , " | Vector: ", i, " | Size: ", size, " | Time Sort: ", total_time, "seconds\n");
 				//Close FILE
 				fclose(file);
 			}
 		}
 		average_time = average_time / 10.0;
-		fprintf(results, "%s %d %s", "Average :", average_time, "\n \n");
+		fprintf(results, "%s %lf %s", "Average :", average_time, "\n \n");
 		fclose(results);
 		free(myPath);
 	}
@@ -180,19 +180,19 @@ void sortInstances(char path[], int sort, int size, int type){
 }
 
 int main(void){
-	
+
 	char PATH[] = "instancias/";
-	
+
 	int size1 = 100000;
 	int size2 = 500000;
 	int size3 = 1000000;
-	
+
 	int sort1 = 10;
 	int sort2 = 50;
 	int sort3 = 90;
-	
+
 	//Quick Sort
-	
+
 	//Sort 10%
 	sortInstances(PATH, sort1, size1, 5);
 	sortInstances(PATH, sort1, size2, 5);
@@ -202,14 +202,14 @@ int main(void){
 	//sortInstances(PATH, sort2, size1, 5);
 	//sortInstances(PATH, sort2, size2, 5);
 	//sortInstances(PATH, sort2, size3, 5);
-	
-	//Sort 90% 
+
+	//Sort 90%
 	//sortInstances(PATH, sort3, size1, 5);
 	//sortInstances(PATH, sort3, size1, 5);
 	//sortInstances(PATH, sort3, size1, 5);
-	
+
 	//Sort Algorithm of C
-	
+
 	//Sort 10%
 	//sortInstances(PATH, sort1, size1, 6);
 	//sortInstances(PATH, sort1, size2, 6);
@@ -219,13 +219,13 @@ int main(void){
 	//sortInstances(PATH, sort2, size1, 6);
 	//sortInstances(PATH, sort2, size2, 6);
 	//sortInstances(PATH, sort2, size3, 6);
-	
-	//Sort 90% 
+
+	//Sort 90%
 	//sortInstances(PATH, sort3, size1, 6);
 	//sortInstances(PATH, sort3, size1, 6);
 	//sortInstances(PATH, sort3, size1, 6);
-	
+
 	system("pause");
-	
+
 	return 0;
 }
