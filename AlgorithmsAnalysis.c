@@ -128,7 +128,6 @@ void sortInstances(char path[], int sort, int size, int type){
 				}
 
 
-
 				start_t = clock();
 				//printf("START_T = %ld\n", start_t);
 				switch(type){
