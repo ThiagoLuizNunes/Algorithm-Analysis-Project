@@ -1,60 +1,4 @@
-/*
-SIZE = 50
-100
-9356
-5028
-9057
-9511
-4095
-8951
-467
-2026
-3426
-5256
-9989
-3903
-5023
-7588
-1416
-3700
-2492
-6397
-5252
-7042
-6074
-2746
-4321
-8382
-3621
-2404
-72
-2346
-9024
-6723
-9555
-8731
-6222
-4892
-9882
-8729
-2456
-6828
-4534
-1218
-7416
-1616
-1410
-3728
-6501
-9729
-1087
-5598
-3902
-*/
-
-/*<<<<<<<<<<<<<<<<<<<<MERGE SORT>>>>>>>>>>>>>>>>>>>>*/
-#include <stdio.h>
-#include <stdlib.h>
+#include "Algorithms.h"
 
 void mergeSort(int* vetor, int posicaoInicio, int posicaoFim){
 	int i, j, k, metadeTam, *vetorTemp;
@@ -212,8 +156,3 @@ void insertionSort(int *vet, int tam){
 		vet[j+1] = aux;
 	}
 }
-
-
-
-
-
