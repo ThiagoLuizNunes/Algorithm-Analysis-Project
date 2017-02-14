@@ -4,25 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//MergeSort
-void mergeSort(int* vetor, int posicaoInicio, int posicaoFim);
-
-//QuickSort
-int partition(int* ar, int ini, int fim);
-
-void quickSort(int* ar, int ini, int fim);
-
-//HeapSort
-void createHeap(int *vet, int i, int f);
-
-void heapSort(int *vet, int tam);
-
-//SelectionSort
-void selectionSort(int *vet, int tam);
-
-//InsertionSort
-void insertionSort(int *vet, int tam);
-
 //CountingSort
 void countingSort(int *vet, int tam);
 
@@ -33,3 +14,16 @@ void bucketSort();
 void radixSort();
 
 #endif
+
+/*
+100
+9356
+5028
+9057
+9511
+4095
+8951
+467
+2026
+3426
+*/

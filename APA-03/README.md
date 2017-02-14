@@ -1,6 +1,6 @@
-# APA-02
+# APA-03
 
-This project execute sorting algorithms over integer vectors of size 100.000, 500.000 and 1.000.0000 with the objective to compare the efficiency of this algorithms. The following algorithms are implemented: Selection Sort, Insertion Sort, Merge Sort, Quick Sort and Heap Sort.
+This project execute sorting algorithms over integer vectors with the objective to sort. The following algorithms are implemented: Counting Sort, Bucket Sort and Radix Sort.
 
 ## Requirements ##
 
@@ -25,4 +25,4 @@ $> make
 
 ```
 $> cd bin
-$> ./APA-02
+$> ./APA-03

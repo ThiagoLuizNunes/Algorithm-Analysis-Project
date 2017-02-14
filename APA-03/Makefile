@@ -1,4 +1,4 @@
-# APA-02
+# APA-03
 #
 
 # Compiler
@@ -10,7 +10,7 @@ BUILDDIR := build
 TARGETDIR := bin
 
 # Targets
-EXECUTABLE := APA-02
+EXECUTABLE := APA-03
 TARGET := $(TARGETDIR)/$(EXECUTABLE)
 
 # Final Paths
