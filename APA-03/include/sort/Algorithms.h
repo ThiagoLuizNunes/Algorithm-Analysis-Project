@@ -23,4 +23,13 @@ void selectionSort(int *vet, int tam);
 //InsertionSort
 void insertionSort(int *vet, int tam);
 
+//CountingSort
+void countingSort(int *vet, int tam);
+
+//BucketSort
+void bucketSort();
+
+//RadixSort
+void radixSort();
+
 #endif

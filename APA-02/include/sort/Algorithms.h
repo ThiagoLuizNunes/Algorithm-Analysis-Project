@@ -4,25 +4,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//MergeSort
 void mergeSort(int* vetor, int posicaoInicio, int posicaoFim);
 
-/*<<<<<<<<<<<<<<<<<<<<QUICK SORT>>>>>>>>>>>>>>>>>>>>*/
-
+//QuickSort
 int partition(int* ar, int ini, int fim);
 
 void quickSort(int* ar, int ini, int fim);
 
-/*<<<<<<<<<<<<<<<<<<<<HEAP SORT>>>>>>>>>>>>>>>>>>>>*/
-
+//HeapSort
 void createHeap(int *vet, int i, int f);
 
 void heapSort(int *vet, int tam);
 
-/*<<<<<<<<<<<<<<<<<<<<SELECTION SORT>>>>>>>>>>>>>>>>>>>>*/
-
+//SelectionSort
 void selectionSort(int *vet, int tam);
-/*<<<<<<<<<<<<<<<<<<<<INSERTION SORT>>>>>>>>>>>>>>>>>>>>*/
 
+//InsertionSort
 void insertionSort(int *vet, int tam);
 
 #endif
