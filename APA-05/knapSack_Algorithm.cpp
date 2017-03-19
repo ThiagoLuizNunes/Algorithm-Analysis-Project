@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 #include <string>
 using namespace std;
 
@@ -58,7 +59,7 @@ int knapSack(int W, int wt[], int val[], int n){
 
 int main(int argc, char const *argv[]) {
 
-  std::vector<string> vFile;
+  std::vector<int> vFile;
   string line;
 
   for (size_t i = 0; i < 2; i++) {
@@ -69,20 +70,32 @@ int main(int argc, char const *argv[]) {
 
     //Pushing all lines from .text to Vector
     while(std::getline(file, line)){
-      vFile.push_back(line);
+      int n;
+      istringstream iss(line);
+      while (iss >> n) {
+        vFile.push_back(n);
+      }
     }
 
+    /*
+    int size = vFile.at(1);
+    int W = vFile.at(1);
+    int wt[] = {};
+    int val[] = {};
+    */
+    //Print Vector
     for (size_t i = 0; i < vFile.size(); i++) {
       cout << vFile.at(i) << endl;
     }
     cout << endl;
   }
-  int val[] = {3,6,9};
-  int wt[] = {2, 3, 6};
-  int  W = 10;
-  int n = sizeof(val)/sizeof(val[0]);
 
-  cout << "Maximum bag value: "<< knapSack(W, wt, val, n) << endl;
+  //int val[] = {3,6,9};
+  //int wt[] = {2, 3, 6};
+  //int  W = 10;
+  //int n = sizeof(val)/sizeof(val[0]);
+
+  //cout << "Maximum bag value: "<< knapSack(W, wt, val, n) << endl;
   cout << endl;
 
   return 0;
