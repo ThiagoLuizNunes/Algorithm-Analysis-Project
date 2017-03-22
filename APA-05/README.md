@@ -11,12 +11,12 @@ This project is the implantation of Knapsack Algorithm.
 
 * Clone the project.
 * Move to the desired project.
-* Compile: g++ -std=c++0x  -o TESTE knapSack_Algorithm.cpp
+* Compile the .cpp
 
 ```
 $> git clone https://github.com/ThiagoLuizNunes/Algorithm-Analysis-Project
 $> cd PROJECT_FOLDER
-$> make 
+$> g++ -std=c++0x  -o TESTE knapSack_Algorithm.cpp
 ```
 
 ## Execution Instructions ##
