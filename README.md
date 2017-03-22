@@ -11,3 +11,5 @@ The projects can be found under this repository tree. For your convenience links
 * [First Project](https://github.com/ThiagoLuizNunes/Algorithm-Analysis-Project/tree/master/APA-01)
 
 * [Second Project](https://github.com/ThiagoLuizNunes/Algorithm-Analysis-Project/tree/master/APA-02)
+
+* [KnapSack  Algorithm Project](https://github.com/ThiagoLuizNunes/Algorithm-Analysis-Project/tree/master/APA-05)
