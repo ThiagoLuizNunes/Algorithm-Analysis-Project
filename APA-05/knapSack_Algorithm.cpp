@@ -14,12 +14,13 @@ int knapSack(int W, int wt[], int val[], int n){
 
   int K[n+1][W+1];
 
-  for (size_t i = 0; i < n; i++) {
+  for (size_t i = 0; i <= n; i++) {
     K[i][0] = 0;
   }
-  for (size_t i = 0; i < W; i++) {
+  for (size_t i = 0; i <= W; i++) {
     K[0][i] = 0;
   }
+
   for (size_t i = 1; i <= n; i++) {
     for (size_t x = 1; x <= W; x++) {
       if(wt[i-1] <= x){
@@ -38,33 +39,42 @@ int knapSack(int W, int wt[], int val[], int n){
     cout << endl;
   }
   //Number´print sequence
-  int w = W;
+  int wight = W;
+  int size = n;
   std::vector<int> v;
 
-  for (size_t i = n; i > 0; i--) {
-    if(K[i][w] != K[i-1][w]){
-      v.push_back(wt[i]);
-      w = w - wt[n];
+  cout << endl;
+  cout << "Itemns wight: ";
+
+  for (size_t i = size; i > 0; i--) {
+    if(K[i][wight] != K[i-1][wight]){
+      v.push_back(val[i-1]);
+      wight = wight - wt[i-1] ;
+      cout << wt[i-1] << " ";
     }
   }
 
   cout << endl;
-  cout << "Size of itemns in the bag: ";
+  cout << "Maximun bag wight: " << W << endl;
+  cout << "Items value: ";
+
   for (size_t i = 0; i < v.size(); i++) {
-    cout << " " << v.at(i);
+    cout << v.at(i) << " ";
   }
   cout << endl;
+
   return K[n][W];
 }
 
 int main(int argc, char const *argv[]) {
 
-  std::vector<int> vFile;
   string line;
+  std::vector<int> vFile;
 
   for (size_t i = 0; i < 2; i++) {
 
     int number = i+1;
+
     //Open file from directory
     ifstream file(PATH + "mochila0"+ to_string(number) + ".txt");
 
@@ -77,25 +87,27 @@ int main(int argc, char const *argv[]) {
       }
     }
 
-    /*
-    int size = vFile.at(1);
+    int size = vFile.at(0);
     int W = vFile.at(1);
     int wt[] = {};
     int val[] = {};
-    */
-    //Print Vector
-    for (size_t i = 0; i < vFile.size(); i++) {
-      cout << vFile.at(i) << endl;
+    size_t vFile_half = (vFile.size()-2)/2;
+
+    //Populate array wt and val
+    for (size_t i = 0; i < vFile_half; i++) {
+      wt[i] = vFile.at(i+2);
     }
+    for (size_t i = 0; i < vFile_half; i++) {
+      val[i] = vFile.at(vFile_half+2+i);
+    }
+
     cout << endl;
+    cout << "Maximum bag value: "<< knapSack(W, wt, val, size) << endl;
+
+    vFile.clear();
+
   }
 
-  //int val[] = {3,6,9};
-  //int wt[] = {2, 3, 6};
-  //int  W = 10;
-  //int n = sizeof(val)/sizeof(val[0]);
-
-  //cout << "Maximum bag value: "<< knapSack(W, wt, val, n) << endl;
   cout << endl;
 
   return 0;
